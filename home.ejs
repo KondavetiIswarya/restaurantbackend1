@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        a {
+            display: block;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .dish {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px;
+            display: inline-block;
+            width: 220px;
+            height: 400px;
+            text-align: center;
+            background-color: #fff;
+            transition: transform 0.2s;
+            box-sizing: border-box;
+            vertical-align: top;
+        }
+
+        .dish:hover {
+            transform: scale(1.05);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 18px;
+            margin: 10px 0 5px;
+        }
+
+        p {
+            font-size: 14px;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Menu List</h1>
+    <a href="/form"><button>Create New Dish</button></a>
+
+    <% dishes.forEach(dish => { %>
+        <div class="dish">
+            <img src="<%= dish.image %>" alt="<%= dish.dishName %>">
+            <h2><%= dish.dishName %></h2>
+            <p><strong>Price:</strong> Rs <%= dish.price %></p>
+            <a href="/dishes/edit/<%= dish._id %>"><button>Edit</button></a>
+            <form action="/dishes/delete/<%= dish._id %>" method="POST" style="display:inline;">
+                <button type="submit" onclick="return confirm('Are you sure?')">Delete</button>
+            </form>
+        </div>
+    <% }); %>
+
+</body>
+</html>

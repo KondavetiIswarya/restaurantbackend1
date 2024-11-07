@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Dish</title>
+</head>
+<body>
+  <h1>Edit Dish</h1>
+
+  <!-- Use dish._id in the form action to correctly update the specific dish -->
+  <form action="/dishes/update/<%= dish._id %>" method="POST">
+    <label for="dishName">Dish Name:</label>
+    <input type="text" name="dishName" id="dishName" value="<%= dish.dishName %>" required>
+    
+    <label for="price">Price:</label>
+    <input type="number" name="price" id="price" value="<%= dish.price %>" required>
+    
+    <label for="image">Image URL:</label>
+    <input type="text" name="image" id="image" value="<%= dish.image %>" required>
+   
+    <button type="submit">Update Dish</button>
+  </form>
+</body>
+</html>
